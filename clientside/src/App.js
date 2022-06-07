@@ -10,7 +10,7 @@ import { useNavigate  } from "react-router-dom";
 import { Text, Button, Box, Flex, Input, HStack, VStack, Center } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import io from "socket.io-client";
-import { DiReact } from "react-icons/di";
+
 import {
     List,
     ListItem,
