@@ -1,0 +1,343 @@
+const questions=`Who is most likely to pass wind in public?
+Who is most likely to become a slave?
+Who is most likely to write the worst-selling book?
+Who is most likely to become a social media influencer?
+Who is most likely to go skinny dipping shamelessly?
+Who is most likely to wear a crazy hairstyle all year long?
+Who is most likely to pretend to be the opposite gender?
+Who is most likely to become a clown?
+Who is most likely to be fearless in skydiving?
+Who is most likely to have the most spoilt kids?
+Who is most likely to take the most candy at a go?
+Who is most likely to abandon their country for greener pasture?
+Who is most likely to miss their wedding because of oversleeping?
+Who is most likely to throw tantrums in public?
+Who is most likely to donate their life savings to charity?
+Who is most likely to marry their pet?
+Who is most likely to divorce their partner for the pettiest reasons?
+Who is most likely to go bungee jumping naked?
+Who is most likely to act in the adult film industry?
+Who is most likely to fight a police officer?
+Who is most likely to be a sucker for romantic movies?
+Who is most likely to have the weirdest fetish?
+Who is most likely to suck at first-time dates?
+Who is most likely to lie about meeting a ghost?
+Who is most likely to fake their death?
+Who is most likely to pick their nose when not being watched?
+Who is most likely to turn up to work drunk?
+Who is most likely to skip work to attend a party?
+Who is most likely to burn the house down while cooking?
+Who is most likely to neglect the kids when babysitting?
+Who is most likely to break people's hearts?
+Who is most likely to ruin their ex's wedding?
+Who is most likely to be dramatic?
+Who is most likely to forget to pick their kids from school?
+Who is most likely to get struck by lightning?
+Who is most likely to turn into a genius?
+Who is most likely to drive the most expensive car?
+Who is most likely to relapse after going to rehab?
+Who is most likely to stand up to an intruder?
+Who is most likely to kill an innocent animal?
+Who is most likely to become an overthinker?
+Who would most likely dye their hair in weird colors?
+Who is most likely to embarrass kids in public?
+Who would most likely cheer people up easily?
+Who is most likely to have petty excuses?
+Who is most likely to make an offensive joke openly?
+Who is most likely to change their name in a court of law?
+Who is most likely to turn into a politician?
+Who is most likely to pull off a prank successfully?
+Who is most likely to slam the door after an argument?
+Who is most likely to have the worst taste in dressing?
+Who is most likely to kill themselves after a heartbreak?
+Who is most likely to obsess over a celebrity?
+Who is most likely to lie to the police?
+Who is most likely to live alone on an island?
+Who is most likely to remain single forever?
+Who is most likely to remain a virgin till marriage?
+Who is most likely to create a brand?
+Who is most likely to marry a closeted gay friend?
+Who is most likely to get a face tattoo?
+Who is most likely to get arrested for being too drunk?
+Who is most likely to become a magician?
+Who is most likely to visit all the continents?
+Who is most likely to work in the White House?
+Who is most likely to become Hollywood famous?
+Who is most likely to become the wealthiest?
+Who is most likely to retire in a deserted farmhouse?
+Who is most likely to have more than ten children?
+Who is most likely to have a weird phobia?
+Who is most likely to tour the world by sea?
+Who is most likely to get kicked out of a cinema?
+Who is most likely to use a fake I.D. to get into a club?
+Who is most likely to live the longest?
+Who is most likely to live in the wilderness?
+Who is most likely to author a book?
+Who is most likely to marry into a royal family?
+Who is most likely to become a private investigator?
+Who is most likely to become a race car driver?
+Who is most likely to die without having children?
+Who is most likely to work as a journalist?
+Who is most likely to live in a big city?
+Who is most likely to become an alcoholic?
+Who is most likely to live on a farm?
+Who is most likely to be a gang member?
+Who is most likely to set a Guinness World record for something?
+Who is most likely to be imprisoned?
+Who's most likely to get a stalker?
+Who is most likely to become the next USA president?
+Most likely to be in a choir?
+Who is most likely to have a million followers on social media?
+Who is most likely to take up professional sports?
+Who is most likely to lock themselves out of the house?
+Who is most likely to marry a celebrity?
+Who is most likely to give all their wealth to charity?
+Who is most likely to become a bestselling author?
+Who is most likely to be the Miss Universe?
+Who is most likely to become an inventor?
+Who is most likely to join the army?
+Who is most likely to win the lottery?
+Who is most likely to go to space?
+Who is most likely to die first?
+Who is most likely to cry in a sad movie?
+Who is most likely to be interested in same-sex marriage?
+Who is most likely to fight in public?
+Who is most likely to do weird things in public?
+Who is most likely to work at Facebook?
+Who is most likely to become a doctor?
+Who is most likely to be sensitive?
+Who is most likely to appear on a reality show?
+Who is most likely to Have the most piercings?
+Who is most likely to fret about small things?
+Who is most likely to win an Oscar award?
+Who is most likely to have plastic surgery?
+Who is most likely to quit their job and travel the world?
+Who is most likely to be a poet?
+Who is most likely to have a one-night stand?
+Who is most likely to be a stand-up comedian?
+Who is most likely to work for NASA?
+Who is most likely to be involved in a felony?
+Who is most likely to sue the government?
+Who is most likely to stay longest in the bathroom?
+Who is most likely to be a perfect kisser?
+Who is most likely to visit the Eiffel tower?
+Who is most likely to play the role of a superhero?
+Who is most likely to have children first?
+Who is most likely to buy a luxury car?
+Who is most likely to date their boss?
+Who is most likely to order a pizza within the next 24 hours?
+Who is most likely to be a painter?
+Who is most likely to dye their hair?
+Who is most likely to sleep naked?
+Who is most likely to be willing to kiss their crush?
+Who is most likely not to join a university?
+Who is most likely to be the first one to die in a zombie attack?
+Who is most likely to be a billionaire?
+Who is most likely to change their first name?
+Who is most likely to be an undercover agent?
+Who is most likely to snore?
+Who is most likely to be a gambler?
+Who is most likely never to leave their country?
+Who is most likely to be afraid of watching horror movies?
+Who is most likely to go bankrupt?
+Who is most likely to backstab friends?
+Who is most likely to have a family of daughters?
+Who is most likely to marry their best friend's ex?
+Who is most likely to pick up a girl at a funeral?
+Who is most likely to be in two or more relationships at once?
+Who is most likely to give their train seat to a pregnant lady?
+Who is most likely to get hooked on drugs?
+Who is most likely to fake-reserve a seat at a restaurant?
+Who is most likely to make love in public?
+Who is most likely to be a lenient parent?
+Who is most likely to freak out during a storm?
+Who is most likely to build a house next to a beach?
+Who is most likely to sleep through an alarm?
+Who is most likely to remain in the shower the longest?
+Who is most likely to arrive late to an important event?
+Who is most likely to get mad after losing a game?
+Who is most likely to lose their phone at a party?
+Who is most likely to offer the same gift all the time?
+Who is most likely to destroy their phone in a fit of rage?
+Who is most likely to go on a spontaneous cross-country road trip?
+Who is most likely to go days without showering?
+Who is most likely to steal their parent's car?
+Who is most likely to be expelled?
+Who is most likely to forget their keys in the car?
+Who is most likely to stay with their parents the longest?
+Who is most likely to leave without notice?
+Who is most likely to have straight A's?
+Who is most likely to spend hours on a phone call?
+Who is most likely to piss themselves when scared?
+Who is most likely to move out because of a spider?
+Who is most likely to sneak out for a party?
+Who is most likely to fail a lie-detector test?
+Who is most likely to sleep while watching the television?
+Who is most likely to be their parents' favorite?
+Who is most likely to cover for their sibling?
+Who is most likely to be a loner?
+Who is most likely to be student president?
+Who is most likely to be self-employed?
+Who is most likely to mess up during an interview?
+Who is most likely to go bald first?
+Who is most likely to skip a meal because of a video game?
+Who is most likely to spend all day online?
+Who is most likely to never recover from heartbreak?
+Who is most likely to end a relationship after a week?
+Who is most likely to spend the whole day in bed?
+Who is most likely to get pregnant first?
+Who is most likely to cling to a toxic relationship?
+Who is most likely to have an imaginary friend?
+Who is most likely to be attacked by a wild animal?
+Who is most likely to form a close bond with a cat?
+Who is most likely to start a YouTube channel?
+Who is most likely to be a horrible boss?
+Who is most likely to marry a millionaire?
+Who is most likely to change their sexual orientation?
+Who is most likely to listen to rock and roll?
+Who is most likely to develop a beer belly?
+Who is most likely to be a deadbeat parent?
+Most likely to get lost in their own hometown? 
+Most likely to get caught skinny dipping?
+Most likely to get an embarrassing tattoo?
+Most likely to become a crazy cat lady? 
+Most likely to eat something off the ground?
+Most likely to give their kid an unusual (*cough* ridiculous *cough*) name? 
+Most likely to get arrested for urinating in public?
+Most likely to have a foot fetish? 
+Most likely to let rip in public?
+Most likely to get arrested for being drunk and disorderly?
+Most likely to lock themselves out of the house?
+Most likely to stay in the bathroom the longest (we don't need to know what you're doing!)?
+Most likely to order a takeaway in the next 24 hours?
+Most likely to pull a sickie due to a hangover?
+Most likely to say something stupid on a first date?
+Most likely to own the most pets?
+Most likely to lose their phone on a night out?
+Most likely to stack it on a night out?
+Most likely to snore so badly their partner sleeps on the sofa?
+Most likely to have used fake I.D. to buy booze? 
+Most likely to date two guys at once?
+Most likely to sleep with someone on the first date?
+Most likely to forget the name of a person they hooked up with?
+Most likely to have a one night stand?
+Most likely to get caught hooking up with someone in public?
+Most likely to fall asleep during sex?
+Most likely to try a threesome?
+Most likely to hook up with their boss?
+Most likely to get caught with their ex? 
+Most likely to build a sex dungeon?
+Most likely to make the first move?
+Most likely to sleep with a colleague?
+Most likely to go to a strip club?
+Most likely to be into BDSM?
+Most likely to masturbate in a public place?
+Most likely to make a sex tape?
+Most likely to not use protection? 
+Most likely to be caught watching porn?
+Most likely to cheat on their partner?
+Most likely to moan the loudest during sex?
+Most likely to become a TikTok star?
+Most likely to become a millionaire?
+Most likely to have the most children?
+Most likely to break a World Record?
+Most likely to end up in jail?
+Most likely to become a politician?
+Most likely to join the army?
+Most likely to go to space?
+Most likely to quit their job and travel the world?
+Most likely to become famous?
+Most likely to live the longest?
+Most likely to mess up a job interview?
+Most likely to get a PhD?
+Most likely to marry into the Royal Family?
+Most likely to appear on a reality TV show?
+Most likely to write a book?
+Most likely to become a comedian?
+Most likely to go bankrupt?
+Most likely to retire young?
+Most likely to marry more than once?
+Most likely to get away with murder?
+Most likely to be the favourite sibling?
+Most likely to ditch their friends to flirt with a stranger?
+Most likely to die first if you were in a horror film?
+Most likely to embarrass a friend in public?
+Most likely to embarrass themselves in public?
+Most likely to give a sarcastic comment? 
+Most likely to win in a race?
+Most likely to blab a secret?
+Most likely to retire in the countryside?
+Most likely to retire in a city?
+Most likely to spend the most on clothes?
+Most likely to give money to charity?
+Most likely to do volunteer work? 
+Most likely to disappear from the friendship group?
+Most likely to shoplift? 
+Most likely to do a nature poo? 
+Most likely to blame something on someone else?
+Most likely to lie on their CV?
+Most likely to go a week without showering?
+Most likely to go on a romantic trip to Paris?
+Most likely to live in the wild?
+Most likely to get stranded on a desert island?
+Most likely to go on a cruise?
+Most likely to visit every continent?
+Most likely to go on a caravan holiday?
+Most likely to become a pirate?
+Most likely to climb Everest?
+Most likely to get stuck up a hill and have to call mountain rescue?
+Most likely to live abroad?
+Most likely to have a holiday romance?
+Most likely to wake up in a foreign prison cell?
+Most likely to put on the local accent (badly) when ordering food?
+Most likely to still eat British cuisine in a foreign country?
+Most likely to have a holiday in the UK rather than abroad?
+Most likely to go travelling for 6 months?
+Most likely to stay in a 5-star hotel?
+Most likely to stay in a 1-star hotel?
+Most likely to get married abroad?
+Most likely to buy a holiday home in France?
+Most likely to get married in Vegas?
+Most likely to marry their high school sweetheart?
+Most likely to not want kids?
+Most likely to have had their first kiss before everyone else?
+Most likely to be late for their own wedding?
+Most likely to marry themselves?
+Most likely to marry their dog?
+Most likely to get proposed to in public?
+Most likely to say the wrong name at the altar?
+Most likely to cry during their wedding?
+Most likely to have children first/next?
+Most likely to be a cool parent?
+Most likely to be a strict parent?
+Most likely to have twins?
+Most likely to marry a drug lord?
+Most likely to marry a millionaire (millionaire drug lord doesn't count!)?
+Most likely to end a relationship over text?
+Most likely to pretend to be married to avoid being hit on?
+Most likely to have an extravagant wedding?
+Most likely to get married within a month of meeting someone?
+Most likely to hook up with a stranger on a hen do?
+Most likely to flirt with bar staff to get a free drink?
+Most likely to get asked for their number?
+Most likely to have a stripper on their hen do?
+Most likely drink too much?
+Most likely to dance on the table?
+Most likely to wake up with a tattoo?
+Most likely to flirt with a bouncer?
+Most likely to be first up on karaoke? 
+Most likely to be the last person standing?
+Most likely to get lost on the night out?
+Most likely to have their hen do in Ibiza?
+Most likely to have their hen do in Blackpool?
+Most likely to win at clay pigeon shooting?
+Most likely to crack up at life drawing?
+Most likely to sleep through breakfast?
+Most likely to excel at pole dancing lessons?
+Most likely to win at go karting?
+Most likely to be the first one on the dance floor?
+Most likely to get a drink bought for them?
+Most likely to wake up without a hangover?`
+
+const question = questions.split("\n")[Math.floor(Math.random() * (questions.split("\n").length-1))];
+export { question };
