@@ -21,7 +21,7 @@ client.connect().then(() => {
 var players={};
 app.use(cors(
   {
-    origin: "*"
+    origin: "https://desolate-tundra-24390.herokuapp.com/"
   }
 ));
 
