@@ -19,7 +19,11 @@ client.connect().then(() => {
 })
 
 var players={};
-app.use(cors());
+app.use(cors(
+  {
+    origin: "*"
+  }
+));
 
 
 //SOCKET IO SERVER
