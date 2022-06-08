@@ -29,7 +29,7 @@ for (let i=0; i<6; i++){
   roomC += keys[Math.floor(Math.random() * (keys.length-1) )];
 }
 
-var socket = io.connect();
+var socket = io.connect("https://desolate-tundra-24390.herokuapp.com/");
 
 
 function App() {
