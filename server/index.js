@@ -19,18 +19,17 @@ client.connect().then(() => {
 })
 
 var players={};
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  credentials: true,
+  methods: ["PUT", "GET", "POST"]
+}
+));
 
 //SOCKET IO SERVER
 const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    credentials: true,
-    methods: ["PUT", "GET", "POST"]
-  },
-});
+const io = new Server(server);
 
 
 io.on("connection", (socket) => {
