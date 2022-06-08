@@ -21,18 +21,14 @@ client.connect().then(() => {
 var players={};
 app.use(cors());
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
-
-
 //SOCKET IO SERVER
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
     origin: "*",
-    credentials: "*"
+    credentials: true,
+    methods: ["PUT", "GET", "POST"]
   },
 });
 
