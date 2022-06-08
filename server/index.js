@@ -21,9 +21,10 @@ client.connect().then(() => {
 var players={};
 app.use(cors(
   {
-    origin: "https://desolate-tundra-24390.herokuapp.com/"
+    origin: true
   }
 ));
+
 
 
 //SOCKET IO SERVER
@@ -33,8 +34,6 @@ const io = new Server(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    credentials: true,
-    preflightContinue: true,
   },
 });
 
