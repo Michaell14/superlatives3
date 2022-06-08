@@ -19,11 +19,7 @@ client.connect().then(() => {
 })
 
 var players={};
-app.use(cors(
-  {
-    origin: true
-  }
-));
+app.use(cors());
 
 
 
