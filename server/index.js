@@ -19,12 +19,18 @@ client.connect().then(() => {
 })
 
 var players={};
-app.use(cors({
+app.use(cors());
+/*
+{
   origin: "*",
   credentials: true,
   methods: ["PUT", "GET", "POST"]
-}
-));
+}*/
+
+app.get('/products/:id', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
+
 
 //SOCKET IO SERVER
 const server = http.createServer(app);
