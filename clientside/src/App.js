@@ -29,7 +29,7 @@ for (let i=0; i<6; i++){
   roomC += keys[Math.floor(Math.random() * (keys.length-1) )];
 }
 
-var socket = io.connect("http://localhost:3001");
+var socket = io.connect("https://superlatives1.herokuapp.com/");
 
 //https://superlatives1.herokuapp.com/
 function App() {
