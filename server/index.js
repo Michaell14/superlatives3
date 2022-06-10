@@ -73,11 +73,13 @@ io.on("connection", (socket) => {
       socket.leaveAll();
       socket.join(data.newRoom);
 
-      db.collection("users").updateOne({socket: socket.id}, {
-        $set: {"room": data.newRoom },
-        $currentDate: {lastModified: true }
-      })
-      socket.to(data.newRoom).emit("user_joined_room", data.name);
+      if (db!=null){
+        db.collection("users").updateOne({socket: socket.id}, {
+          $set: {"room": data.newRoom },
+          $currentDate: {lastModified: true }
+        })
+        socket.to(data.newRoom).emit("user_joined_room", data.name);
+      }
     })
 
     //Informs client of the other players in the room
