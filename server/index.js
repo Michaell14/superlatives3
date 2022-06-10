@@ -8,16 +8,6 @@ const { MongoClient } = require("mongodb");
 const client = new MongoClient(url);
 const dbName = "superlatives";
 
-var db;
-var col;
-client.connect().then(() => {
-  console.log("connected");
-  db = client.db(dbName);
-  col = db.collection("questions");
-}).catch(error => {
-  console.log(error);
-})
-
 var players={};
 app.use(cors());
 
@@ -33,7 +23,15 @@ const io = new Server(server, {
 });
 
 
-io.on("connection", (socket) => {
+var db;
+var col;
+client.connect().then(() => {
+  console.log("connected");
+  db = client.db(dbName);
+  col = db.collection("questions");
+
+
+  io.on("connection", (socket) => {
 
     async function getData(roomCode){
       //console.log(col.findOne())
@@ -73,13 +71,12 @@ io.on("connection", (socket) => {
       socket.leaveAll();
       socket.join(data.newRoom);
 
-      if (db!=null){
         db.collection("users").updateOne({socket: socket.id}, {
           $set: {"room": data.newRoom },
           $currentDate: {lastModified: true }
         })
         socket.to(data.newRoom).emit("user_joined_room", data.name);
-      }
+      
     })
 
     //Informs client of the other players in the room
@@ -163,6 +160,14 @@ io.on("connection", (socket) => {
       }
     })
 });
+
+
+}).catch(error => {
+  console.log(error);
+})
+
+
+
 
 server.listen(process.env.PORT || 3001, () => {
   console.log("SERVER IS RUNNING");
