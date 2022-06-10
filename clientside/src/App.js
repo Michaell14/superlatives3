@@ -30,6 +30,7 @@ for (let i=0; i<6; i++){
 }
 
 var socket = io.connect("https://superlatives1.herokuapp.com/");
+//var socket = io.connect("http://localhost:3001");
 
 //https://superlatives1.herokuapp.com/
 function App() {
