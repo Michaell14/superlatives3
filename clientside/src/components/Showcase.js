@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { socket } from "../App";
 import PieChart from "../ResponseChart";
-import { Text, Center, Box, Grid, Input, Icon  } from '@chakra-ui/react'
-
+import { Text, Center, Box, Grid  } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 function Showcase() {
     const [result, setResult] = useState([]);
@@ -52,21 +52,38 @@ function Showcase() {
                 <Text fontSize={"55px"}>Showcase</Text>
             </Center>
             <Box mx={"auto"}>
-                <Grid templateColumns='repeat(2, 1fr)' gap={6}>
-                    {result.map((item, index) => (
-                    <Box key={item} mt={20}>
-
-                        <Center>
-                            <Text>{item}</Text>
-                        </Center>
-                        
-                        <Center>
-                            <PieChart list={votedPeople[index]} weight={votes[index]}/>
-                        </Center>
+                <Tabs variant='soft-rounded' colorScheme='green'>
+                    <Center>
+                        <TabList mt={10}>
+                            <Tab>Question 1</Tab>
+                            <Tab>Question 2</Tab>
+                            <Tab>Question 3</Tab>
+                            <Tab>Question 4</Tab>
+                            <Tab>Question 5</Tab>
+                            <Tab>Question 6</Tab>
+                            <Tab>Question 7</Tab>
+                            <Tab>Question 8</Tab>
+                            <Tab>Question 9</Tab>
+                            <Tab>Question 10</Tab>
+                        </TabList>
+                    </Center>
                     
-                    </Box>
-                ))}
-                </Grid>
+                    <TabPanels mt={20}>
+                        
+                        {result.map((item, index) => (
+                            <TabPanel key={item}>
+                                <Center>
+                                    <Text>{item}</Text>
+                                </Center>
+                                
+                                <Center>
+                                    <PieChart list={votedPeople[index]} weight={votes[index]}/>
+                                </Center>
+                            </TabPanel>
+                            
+                        ))}
+                    </TabPanels>
+                </Tabs>
 
             </Box>
         </>

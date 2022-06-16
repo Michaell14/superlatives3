@@ -9,6 +9,7 @@ import { question } from './Questions';
 const roomPlayersConst=[];
 var roomCode=roomC;
 let startQuestion="";
+let gameStarted=false;
 
 function Lobby() {
     
@@ -16,19 +17,26 @@ function Lobby() {
     const [roomPlayers, setRoomPlayers] = useState([name]);
     const [room, setRoom] = useState(roomC);
     const [copyMessage, setCopyMessage] = useState("Copy to Clipboard");
+    const [startDisabled, setStartDisabled] = useState(false);
 
+    //Allows a user to join a room
     const joinRoom = () => {
         const newRoom=$("#room").val();
         setRoom(newRoom);
+        socket.emit("join-room", {name, newRoom, roomCode});
         roomCode=newRoom;
-        socket.emit("join-room", {name, newRoom});
+        setStartDisabled(true);
+        
     }
 
+    //Start the game for all players
     const startGame = () => {
         const toSend = [...new Set(roomPlayers)];
         socket.emit("start-game", {room, toSend, question});
+        gameStarted=true;
     }
 
+    //Copies the room code onto clipboard
     const copyToClipboard = () => {
         var copyTextarea = document.querySelector('.roomInfo');
         copyTextarea.focus();
@@ -50,7 +58,6 @@ function Lobby() {
     }
 
     useEffect(() => {
-
         //When user joins room
         socket.on("user_joined_room", (newName) => {
             setRoomPlayers(roomPlayers => [...roomPlayers, newName] ); 
@@ -73,10 +80,15 @@ function Lobby() {
             }
             startQuestion = data[1];
             navigate('/game');
+            gameStarted=true;
         })
 
         socket.on("player-disconnect", (deleteSocketId) => {
             setRoomPlayers(roomPlayers.filter(item => item !== deleteSocketId))
+        })
+
+        socket.on("failed-room-join", () => {
+            alert("Room game has already started or room does not exist");
         })
 
     }, [socket])
@@ -100,7 +112,7 @@ function Lobby() {
                             _hover={{cursor: "pointer"}}
                             />
 
-                        <Input defaultValue={roomCode} className="roomInfo" isReadOnly={true} focusBorderColor={"white"} placeholder='Room Code' variant={"filled"}/>
+                        <Input value={room} className="roomInfo" isReadOnly={true} focusBorderColor={"white"} placeholder='Room Code' variant={"filled"}/>
                     </InputGroup>
                 </Box>
             </Center>
@@ -128,7 +140,7 @@ function Lobby() {
                 ))}
 
                 <Center mt={20}>
-                    <Button onClick={startGame} bg={"#BFD7B5"} borderColor={"#BFD7B5"}>Start Game</Button>
+                    <Button onClick={startGame} bg={"#BFD7B5"} borderColor={"#BFD7B5"} isDisabled={startDisabled}>Start Game</Button>
                 </Center>
             </Box>
         </>

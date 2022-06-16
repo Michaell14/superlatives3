@@ -29,12 +29,12 @@ client.connect().then(() => {
   console.log("connected");
   db = client.db(dbName);
   col = db.collection("questions");
-
+  db.collection("rooms").createIndex({"createdAt": 1}, {expireAfterSeconds: 172800})
 
   io.on("connection", (socket) => {
 
     async function getData(roomCode){
-      //console.log(col.findOne())
+
       await col.aggregate(
         [ { $sample: { size: 1 } } ]
     ).toArray(function(err, result) {
@@ -67,15 +67,26 @@ client.connect().then(() => {
     
     //When a user joins a room
     socket.on("join-room", (data) => {
-      //leaves old room and joins new room
-      socket.leaveAll();
-      socket.join(data.newRoom);
 
-        db.collection("users").updateOne({socket: socket.id}, {
-          $set: {"room": data.newRoom },
-          $currentDate: {lastModified: true }
-        })
-        socket.to(data.newRoom).emit("user_joined_room", data.name);
+      db.collection("rooms").find( {"room": data.newRoom} ).toArray(function(err, result) {
+        if (err){
+          throw err;
+        }
+        console.log(result);
+        if (result.length==0){
+          //leaves old room and joins new room
+          socket.leaveAll();
+          socket.join(data.newRoom);
+
+          db.collection("users").updateOne({socket: socket.id}, {
+            $set: {"room": data.newRoom },
+            $currentDate: {lastModified: true }
+          })
+          socket.to(data.newRoom).emit("user_joined_room", data.name);
+        }else{
+          socket.to(data.roomCode).emit("failed-room-join");
+        }
+      });
       
     })
 
@@ -89,7 +100,8 @@ client.connect().then(() => {
       const roomDoc ={
         "room": data.room,
         "question": [],
-        "response": []
+        "response": [], 
+        "createdAt": new Date()
       }
 
       db.collection("rooms").insertOne(roomDoc);
@@ -125,6 +137,7 @@ client.connect().then(() => {
 
       db.collection("users").insertOne(userDoc);
     })
+
 
     //Votes for a player
     socket.on("vote-player", (data) => {
@@ -169,6 +182,11 @@ client.connect().then(() => {
 
 
 
+
 server.listen(process.env.PORT || "https://superlatives1.herokuapp.com/", () => {
   console.log("SERVER IS RUNNING");
 });
+/*
+server.listen(3001, () => {
+  console.log("SERVER IS RUNNING");
+});*/
