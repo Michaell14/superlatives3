@@ -32,7 +32,8 @@ function Lobby() {
     //Start the game for all players
     const startGame = () => {
         const toSend = [...new Set(roomPlayers)];
-        socket.emit("start-game", {room, toSend, question});
+        const size=toSend.length;
+        socket.emit("start-game", {room, toSend, question, size});
         gameStarted=true;
     }
 

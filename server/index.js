@@ -46,6 +46,28 @@ client.connect().then(() => {
     console.log(`User Connected: ${socket.id}`);
   
     socket.on("disconnect", () => {
+      db.collection("users").find( {"socket": socket.id} ).toArray(function(err, result) {
+        if (err){
+          throw err;
+        }
+        if (result.length>0){
+          const roomCode = result[0].room;
+          db.collection("rooms").find( {"room": roomCode} ).toArray(function(err, result2) {
+            if (err){
+              throw err;
+            }
+            const size=result2[0].size-1;
+            db.collection("rooms").updateOne({"room": roomCode},
+              {
+                $set: {"size": size}
+              })
+          });
+        }
+        
+      });
+
+      
+
       db.collection("users").deleteOne( { socket: socket.id } );
     })
 
@@ -72,7 +94,6 @@ client.connect().then(() => {
         if (err){
           throw err;
         }
-        console.log(result);
         if (result.length==0){
           //leaves old room and joins new room
           socket.leaveAll();
@@ -101,7 +122,8 @@ client.connect().then(() => {
         "room": data.room,
         "question": [],
         "response": [], 
-        "createdAt": new Date()
+        "createdAt": new Date(),
+        "size": data.size
       }
 
       db.collection("rooms").insertOne(roomDoc);
@@ -111,6 +133,7 @@ client.connect().then(() => {
 
     //Lets other sockets know when a player disconnects
     socket.on("player-disconnected", room => {
+    
       socket.to(room).emit("player-disconnect", socket.id);
     })
 
@@ -119,7 +142,6 @@ client.connect().then(() => {
         if (err){
           throw err;
         }
-        console.log(result);
         socket.to(room).emit("to-showcase");
         socket.to(room).emit("final-result", result[0]);
       });
@@ -141,8 +163,6 @@ client.connect().then(() => {
 
     //Votes for a player
     socket.on("vote-player", (data) => {
-
-
       //[the person who voted, who they voted for]
       
       if (!(data.roomCode in players)){
@@ -153,24 +173,26 @@ client.connect().then(() => {
           players[data.roomCode].push([data.name, data.toVotePlayerSid]);
         }
       }
+      
+      db.collection("rooms").find( {"room": data.roomCode} ).toArray(function(err, result) {
+        if (err){
+          throw err;
+        }
+        
+        if (players[data.roomCode].length>=result[0].size){
 
-      if (players[data.roomCode].length>=data.size){
-        // Construct a document                                                                                                                                                              
-        /*let answerDoc = {
-          "room": data.roomCode,
-          "question": data.question,
-          "count": data.count,
-          "response": players[data.roomCode]
-        } */
+          db.collection("rooms").updateOne({room: data.roomCode}, 
+          {
+            $push: { question: data.question, response: players[data.roomCode] }
+          });
 
-        db.collection("rooms").updateOne({room: data.roomCode}, 
-        {
-          $push: { question: data.question, response: players[data.roomCode] }
-        });
+          delete players[data.roomCode];
+          getData(data.roomCode);
+        }
+      });
 
-        delete players[data.roomCode];
-        getData(data.roomCode);
-      }
+
+      
     })
 });
 
@@ -181,11 +203,13 @@ client.connect().then(() => {
 
 
 
-
+//for production
 
 server.listen(process.env.PORT || "https://superlatives1.herokuapp.com/", () => {
   console.log("SERVER IS RUNNING");
 });
+
+//for testing
 /*
 server.listen(3001, () => {
   console.log("SERVER IS RUNNING");
