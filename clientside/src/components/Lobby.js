@@ -100,8 +100,11 @@ function Lobby() {
 
             <Center mt={10}>
                 <Box>
-                    <Text fontSize={"lg"}>This Room Code:</Text>
-                        <InputGroup w={"130px"} borderWidth={3} borderRadius={10} _hover={{borderColor:"#A3C4BC", borderWidth:3, borderRadius:10}}>
+                    <Center>
+                        <Text fontSize={"lg"}>Room Code:</Text>
+                    </Center>
+                    <Center>
+                        <InputGroup w={"130px"} _hover={{borderColor:"#A3C4BC"}}>
                             <InputLeftElement
                                 pt={"3.5px"}
                                 onClick={copyToClipboard}
@@ -113,16 +116,18 @@ function Lobby() {
                             _hover={{cursor: "pointer"}}
                             />
 
-                        <Input value={room} className="roomInfo" isReadOnly={true} focusBorderColor={"white"} placeholder='Room Code' variant={"filled"}/>
+                        <Input value={room} className="roomInfo" isReadOnly={true} focusBorderColor={"#9DD9D2"} placeholder='Room Code' variant={"filled"} bg={"#FFF8F0"} borderColor={"#392F5A"} borderRadius={"8px"} borderWidth={"2px"}/>
                     </InputGroup>
+                    </Center>
+                        
                 </Box>
             </Center>
 
             <Box pos={"absolute"} top={0} right={10}>
-                <Text fontSize={"xl"}>Join New Room</Text>
+                <Text fontSize={"xl"} color={"#392F5A"}>Join New Room</Text>
                 <HStack>
-                    <Input id="room" placeholder="room..." w={"130px"}/>
-                    <Button onClick={joinRoom} bg={"#88498F"} color={"white"}>Join</Button>
+                    <Input id="room" placeholder="room..." w={"130px"} borderColor={"#392F5A"} borderWidth={"2px"}/>
+                    <Button onClick={joinRoom} bg={"#392F5A"} color={"white"} _hover={{bg: "rgba(57, 47, 90, .67)"}}>Join</Button>
                 </HStack>
             </Box>
                 
@@ -132,7 +137,7 @@ function Lobby() {
                 </Center>
       
                 {[...new Set(roomPlayers)].map(item => (
-                <Box key={item} borderRadius={5} borderColor={"black"} borderWidth={2} padding={3} mt={2}>
+                <Box key={item} borderRadius={4} borderColor={"black"} borderWidth={2} padding={3} mt={2}>
 
 
                     <Text textAlign={"center"} fontSize={"lg"}>{item}</Text>
@@ -141,7 +146,7 @@ function Lobby() {
                 ))}
 
                 <Center mt={20}>
-                    <Button onClick={startGame} bg={"#BFD7B5"} borderColor={"#BFD7B5"} isDisabled={startDisabled}>Start Game</Button>
+                    <Button onClick={startGame} bg={"#392F5A"} borderColor={"#BFD7B5"} color="white" isDisabled={startDisabled}>Start Game</Button>
                 </Center>
             </Box>
         </>

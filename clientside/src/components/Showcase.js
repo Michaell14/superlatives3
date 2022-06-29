@@ -49,10 +49,10 @@ function Showcase() {
     return (
         <>
             <Center mt={10}>
-                <Text fontSize={"55px"}>Showcase</Text>
+                <Text fontSize={"55px"} color={"#392F5A"}>Showcase</Text>
             </Center>
             <Box mx={"auto"}>
-                <Tabs variant='soft-rounded' colorScheme='green'>
+                <Tabs variant='soft-rounded' colorScheme={"orange"}>
                     <Center>
                         <TabList mt={10}>
                             <Tab>Question 1</Tab>
@@ -71,7 +71,7 @@ function Showcase() {
                     <TabPanels mt={20}>
                         
                         {result.map((item, index) => (
-                            <TabPanel key={item}>
+                            <TabPanel key={index}>
                                 <Center>
                                     <Text>{item}</Text>
                                 </Center>

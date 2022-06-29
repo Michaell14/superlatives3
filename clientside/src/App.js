@@ -10,15 +10,8 @@ import { useNavigate  } from "react-router-dom";
 import { Text, Button, Box, Flex, Input, HStack, VStack, Center } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import io from "socket.io-client";
-
-import {
-    List,
-    ListItem,
-    ListIcon,
-    OrderedList,
-    UnorderedList,
-} from '@chakra-ui/react'
-
+import { ListItem, OrderedList } from '@chakra-ui/react'
+import Carousel from "./components/Carousel";
 let name="";
 
 //Creating random room code
@@ -29,7 +22,10 @@ for (let i=0; i<6; i++){
   roomC += keys[Math.floor(Math.random() * (keys.length-1) )];
 }
 
+//production
 var socket = io.connect("https://superlatives1.herokuapp.com/");
+
+//testing
 //var socket = io.connect("http://localhost:3001");
 
 //https://superlatives1.herokuapp.com/
@@ -55,37 +51,37 @@ function App() {
     return (
         <>
             <Box w={"550px"} mx={"auto"}>
-                <Center mt={40}>
+                <Center mt={"10vh"}>
                     <VStack className="title">
-                        <Text fontWeight={600} fontSize={65}>Superlatives</Text>
-                        <Text fontSize={"27px"}>Enter your name: </Text>
+                        <Text fontWeight={600} fontSize={65} color={"#392F5A"}>Superlatives</Text>
+                        <Text fontSize={"27px"} color={"#392F5A"} pt={"5vh"} className="fancy">Enter a nickname: </Text>
                     </VStack>
                 </Center>
                 
-                <HStack mt={1}>
-                    <Input value={showName} placeholder="nickname..." onChange={(e) => {setName(e.target.value)}}/>
-                    <Button onClick={toLobby} rightIcon={<ArrowForwardIcon />} borderColor="#88498F" color='#88498F' variant='outline'>Continue</Button>
-                </HStack>
-
+                <Center>
+                    <HStack mt={2}>
+                        <Input borderColor={"#392F5A"} variant={"filled"} w={"340px"} bg={"#FFF8F0"} value={showName} placeholder="nickname..." onChange={(e) => {setName(e.target.value)}}/>
+                        <Button onClick={toLobby} rightIcon={<ArrowForwardIcon />} bg="#392F5A" color={"#FFF8F0"} _hover={{bg:"rgba(57, 47, 90, .68)"}}>Continue</Button>
+                    </HStack>
+                </Center>
                 
-                <Box borderColor={"black"} borderRadius={5} borderWidth={2} padding={5} mt={20}>
-                    <Text fontSize={"xl"}>How to play</Text>
-                    <OrderedList>
-                        <ListItem fontWeight={500}>Gather a group of friends (best to have at least 4)</ListItem>
-                        <ListItem fontWeight={500}>Vote for who is most likely to do the shown activity</ListItem>
-                        <ListItem fontWeight={500}>Do this for a total of 10 rounds</ListItem>
-                        <ListItem fontWeight={500}>Wait for the results!</ListItem>
-                    </OrderedList>
+
+                <Box mt={"15vh"}>
+                    <Center>
+                        <Text fontSize={"2xl"} color={"#392F5A"}>How to play!</Text>
+                    </Center>  
+                    <Carousel/>
                 </Box>
-                <Box position="fixed" bottom={5} float={"right"} w={"550px"} className="footer">
+                
+
+                <Box position="fixed" bottom={10} right={10} w={"550px"} className="footer">
                     <Text fontSize="sm" fontWeight={550} mb={"5px"}>About</Text>
                     <Text fontSize="xs">Made by <a href="https://www.itsmichael.dev/" target="_blank" rel="noreferrer"><u>Michael Li</u></a></Text>
                     <Flex justify={"flex-end"}>
                         <Text fontSize="xs">Built with&#160;</Text><Text fontSize="xs" color="#779FA1">React</Text>
                     </Flex>
-             
-                    
                 </Box>
+                
             </Box>
         </>
     );
