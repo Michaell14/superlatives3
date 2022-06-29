@@ -66,7 +66,7 @@ function App() {
                 </Center>
                 
 
-                <Box mt={"15vh"}>
+                <Box mt={"13vh"}>
                     <Center>
                         <Text fontSize={"2xl"} color={"#392F5A"}>How to play!</Text>
                     </Center>  
